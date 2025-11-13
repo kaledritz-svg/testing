@@ -1,0 +1,755 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+/* Color variables for easy theming */
+:root {
+    --bg-dark: #061226; /* deep navy */
+    --bg-mid: #0b2b4a;  /* mid blue */
+    --accent: #3fb3ff;  /* bright cyan/blue */
+    --muted: #eaf6ff;   /* very light blue / off-white */
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    margin: 0;
+    background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid));
+    background-size: 400% 400%;
+    min-height: 100vh;
+    position: relative;
+    animation: modernShift 20s ease infinite;
+    color: var(--muted);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 90%, rgba(100, 255, 255, 0.1));
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes modernShift {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(6,18,38,0.85);
+    padding: 0.75rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(63,179,255,0.08);
+    backdrop-filter: blur(6px);
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 1rem;
+    padding: 0.45rem 0.85rem;
+    transition: color 0.18s ease, transform 0.18s ease;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), #67c9ff);
+    transition: width 0.28s ease;
+    transform: translateX(-50%);
+}
+
+.nav-menu a:hover::after { width: 100%; }
+.nav-menu a:hover { color: var(--accent); transform: translateY(-1px); }
+
+.hero-section {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px; /* Add space for fixed navigation */
+    background-color: rgba(10, 25, 47, 0.3);
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 47, 0.7);
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    color: var(--white);
+    font-size: 3.6rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 12px rgba(11,37,66,0.6);
+}
+
+h1::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        #64ffff,
+        #40c4ff,
+        #64ffff,
+        transparent
+    );
+}
+
+/* subtle background animation retained */
+@keyframes titleGlow { 0% { opacity: 0.98 } 50% { opacity: 1 } 100% { opacity: 0.98 } }
+
+/* remove decorative corner elements for a cleaner modern look */
+
+/* About Section Styles */
+.about-section {
+    padding: 2rem;
+    margin-bottom: 4rem;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2.5rem;
+    padding: 2rem;
+    background-color: rgba(6,18,38,0.75);
+    border: 1px solid rgba(63,179,255,0.06);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(3, 23, 43, 0.45);
+    border-radius: 10px;
+}
+
+.profile-image {
+    flex: 0 0 300px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: rgba(11,37,66,0.35);
+    border: 2px dashed rgba(63,179,255,0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: all 0.28s ease;
+}
+
+.image-placeholder span {
+    color: var(--muted);
+    font-size: 1.05rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.image-placeholder:hover {
+    background-color: rgba(11,37,66,0.45);
+    border-color: rgba(63,179,255,0.18);
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    color: #E8DCC4;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(76, 45, 22, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+.about-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #D4B996, transparent);
+}
+
+.text-box {
+    background-color: rgba(6,18,38,0.55);
+    border: 1px solid rgba(63,179,255,0.06);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-radius: 8px;
+    transition: all 0.22s ease;
+}
+
+.text-box:hover {
+    transform: translateY(-3px);
+    background-color: rgba(6,18,38,0.65);
+    box-shadow: 0 8px 18px rgba(3, 23, 43, 0.35);
+}
+
+.text-box h3 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin: 0 0 0.75rem 0;
+}
+
+.text-box p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Video Section Styles */
+.video-section {
+    padding: 2rem;
+    margin-bottom: 4rem;
+}
+
+.video-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: rgba(6,18,38,0.65);
+    border: 1px solid rgba(63,179,255,0.06);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(3, 23, 43, 0.45);
+    border-radius: 10px;
+}
+
+.video-container h2 {
+    color: var(--accent);
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    display: inline-block;
+}
+
+.video-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #64ffff, transparent);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    margin-bottom: 2rem;
+}
+
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6,18,38,0.6);
+    border: 2px dashed rgba(63,179,255,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: all 0.22s ease;
+}
+
+.video-placeholder span {
+    color: var(--accent);
+    font-size: 1.05rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.video-placeholder:hover {
+    border-color: rgba(63,179,255,0.14);
+    background-color: rgba(6,18,38,0.72);
+}
+
+.video-description {
+    background-color: rgba(10, 25, 47, 0.6);
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(100, 255, 255, 0.1);
+}
+
+.video-description h3 {
+    color: #64ffff;
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+}
+
+.video-description p {
+    color: #ffffff;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Hobbies Section Styles */
+.hobbies-section {
+    padding: 4rem 2rem;
+}
+
+.hobbies-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+.hobby-card {
+    background: rgba(6,18,38,0.6);
+    border: 1px solid rgba(63,179,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.22s ease;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(3, 23, 43, 0.45);
+}
+
+.hobby-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 44px rgba(3, 23, 43, 0.55);
+    border-color: rgba(63,179,255,0.12);
+}
+
+.hobby-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.hobby-image .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 47, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(100, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.hobby-image .image-placeholder span {
+    color: #64ffff;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.hobby-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.hobby-content {
+    padding: 1.5rem;
+}
+
+.hobby-content h2 {
+    color: var(--accent);
+    font-size: 1.3rem;
+    margin: 0 0 0.75rem 0;
+    position: relative;
+    display: inline-block;
+}
+
+.hobby-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.hobby-content p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.98rem;
+}
+
+/* Responsive Design for Hobby Cards */
+@media (max-width: 768px) {
+    .hobbies-container {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+    }
+    
+    .hobby-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+/* Resume Section Styles */
+.resume-section {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(6,18,38,0.3), rgba(11,37,66,0.3));
+}
+
+.resume-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.resume-block {
+    background: rgba(6,18,38,0.65);
+    border: 1px solid rgba(63,179,255,0.08);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(3,23,43,0.3);
+}
+
+.resume-block h2 {
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(63,179,255,0.15);
+}
+
+.resume-content {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.resume-content p {
+    margin: 0.5rem 0;
+}
+
+.resume-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(63,179,255,0.06);
+}
+
+.resume-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+}
+
+.resume-header h3 {
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.resume-date {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.resume-school {
+    color: var(--accent);
+    font-style: italic;
+    margin: 0.25rem 0 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.resume-description {
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0.5rem 0 0 0;
+    font-size: 0.95rem;
+}
+
+.resume-description ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.resume-description li {
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-category {
+    background: rgba(11,37,66,0.4);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba(63,179,255,0.1);
+}
+
+.skill-category h4 {
+    color: var(--accent);
+    font-size: 1rem;
+    margin: 0 0 0.75rem 0;
+}
+
+.skill-category p {
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* Career Interests Page Styles */
+.career-content {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(6,18,38,0.3), rgba(11,37,66,0.3));
+}
+
+.career-section {
+    max-width: 1100px;
+    margin: 0 auto 3rem;
+    display: flex;
+    gap: 2.5rem;
+    background: rgba(6,18,38,0.65);
+    border: 1px solid rgba(63,179,255,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(3,23,43,0.45);
+    backdrop-filter: blur(8px);
+}
+
+.career-image {
+    flex: 0 0 350px;
+    overflow: hidden;
+    background: rgba(11,37,66,0.4);
+}
+
+.career-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.career-section:hover .career-image img {
+    transform: scale(1.05);
+}
+
+.career-info {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.career-textbox {
+    background: rgba(11,37,66,0.5);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba(63,179,255,0.1);
+    transition: all 0.22s ease;
+}
+
+.career-textbox:hover {
+    background: rgba(11,37,66,0.65);
+    border-color: rgba(63,179,255,0.15);
+    transform: translateX(4px);
+}
+
+.career-textbox label {
+    display: block;
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.career-textbox p {
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Responsive Design for Career Section */
+@media (max-width: 900px) {
+    .career-section {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .career-image {
+        flex: 0 0 250px;
+        height: 250px;
+    }
+    
+    .career-info {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .career-image {
+        flex: 0 0 200px;
+        height: 200px;
+    }
+    
+    .career-info {
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background: rgba(6,18,38,0.85);
+    border-top: 1px solid rgba(63,179,255,0.08);
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Responsive Design for Resume */
+@media (max-width: 768px) {
+    .resume-container {
+        padding: 0 1rem;
+    }
+    
+    .resume-block {
+        padding: 1.25rem;
+    }
+    
+    .resume-block h2 {
+        font-size: 1.3rem;
+    }
+    
+    .resume-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .resume-date {
+        margin-top: 0.5rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Update other text colors to match new scheme */
+.about-content h2 { color: var(--accent); }
+.image-placeholder span { color: var(--muted); }
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column;
+    }
+    
+    .profile-image {
+        flex: 0 0 auto;
+    }
+    
+    .image-placeholder {
+        height: 300px;
+    }
+}
+
+/* Additional responsive tweaks: nav and hero adjustments */
+@media (max-width: 900px) {
+    .hero-section { height: 45vh; }
+    .hero-content h1 { font-size: 2.4rem; letter-spacing: 1.2px; }
+}
+
+@media (max-width: 600px) {
+    .nav-menu {
+        padding: 0.5rem 1rem;
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 0.25rem;
+        align-items: center;
+    }
+    .nav-menu a {
+        display: block;
+        padding: 0.6rem 0.5rem;
+        font-size: 1rem;
+    }
+    .hero-section { height: 35vh; }
+    .hero-content h1 { font-size: 1.8rem; letter-spacing: 1px; }
+    .hero-background img { object-position: center top; }
+}

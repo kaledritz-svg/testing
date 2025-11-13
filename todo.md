@@ -1,0 +1,5 @@
+- [x] Examine current career-interests.html file structure
+- [x] Design two picture sections with 4 text boxes each for career information
+- [x] Implement the HTML structure for the new sections
+- [x] Add appropriate CSS styling for the new sections
+- [x] Test the implementation to ensure it works correctly
